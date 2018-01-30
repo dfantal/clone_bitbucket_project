@@ -2,14 +2,14 @@
 
 ## Collect BitBucket credentials
 
-echo -n Bitbucket Host (company.bitbucket.com):
+echo -n "Bitbucket Host (company.bitbucket.com):"
 read host
-echo -n BitBucket Username:
+echo -n "BitBucket Username:"
 read username
-echo -n BitBucket Password:
+echo -n "BitBucket Password:"
 read -s password
 echo
-echo -n BitBucket Project Key:
+echo -n "BitBucket Project Key:"
 read project
 
 ## Get all repos in BitBucket project by finding links with "ssh://" and contain the project key.
