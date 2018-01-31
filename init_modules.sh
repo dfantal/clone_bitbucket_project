@@ -14,6 +14,8 @@ read project
 
 ## Get all repos in BitBucket project by finding links with "ssh://" and contain the project key.
 
+project=$(echo "$project" | awk '{print tolower($0)}')
+
 URL=https://$host/rest/api/1.0/projects/$project/repos?limit=1000
 
 echo $URL
