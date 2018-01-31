@@ -24,16 +24,14 @@ JSON=$(curl -u $username:$password -X GET -H "Content-Type: application/json" $U
 
 REPOS=($(echo ${JSON} | awk -v project=$project 'BEGIN { RS = "\"";} {if($1 ~ "ssh://" && $1 ~ project) print $1 "\n"}'))
 
-## Create directory to put code in and init as git repo with submodules.
+## Create directory to put code in
 
 mkdir $project
 cd $project
-git init
-git submodule init
 
-## For each repo, add it as a submodule. This will clone the repo into the parent project directory.
+## For each repo, clone it. This will clone the repo into the parent project directory.
 
 for repo in ${REPOS[@]}
 do
-	git submodule add "$repo"
+	git clone "$repo"
 done
